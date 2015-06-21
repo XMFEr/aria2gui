@@ -19,7 +19,7 @@
     NSString *exePath = [NSString stringWithFormat:@"%@/aria2c",resourcesPath];
     NSTask *task = [[NSTask alloc] init];
     [task setLaunchPath:exePath];
-    [task setArguments: arguments];
+    [task setArguments:arguments];
     [task launch];}
 
 
