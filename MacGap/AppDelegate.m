@@ -14,8 +14,7 @@
 - (void)applicationWillFinishLaunching:(NSNotification *)aNotification
 {
     //RUN ARIA2
-    NSArray *arguments;
-    arguments = [NSArray arrayWithObjects: @"--enable-rpc", @"--rpc-listen-all=true", @"--rpc-allow-origin-all", @"-c", @"-D", @"-d /Users/Nick/Downloads/Aria2", nil];
+    NSArray *arguments = [NSArray arrayWithObjects: @"--enable-rpc", @"--rpc-listen-all=true", @"--rpc-allow-origin-all", @"-c", @"-D", @"-d /Users/Nick/Downloads/Aria2", nil];
     NSString *resourcesPath = [[NSBundle mainBundle] resourcePath];
     NSString *exePath = [NSString stringWithFormat:@"%@/aria2c",resourcesPath];
     NSTask *task = [[NSTask alloc] init];
