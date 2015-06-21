@@ -39,16 +39,6 @@
     [[NSUserNotificationCenter defaultUserNotificationCenter] setDelegate:self];
 }
 
--(void)applicationWillTerminate:(NSNotification *)notification
-{
-    //KILLALL ARIA2C
-    NSTask *task = [[NSTask alloc] init];
-    [task setLaunchPath:@"/usr/bin/killall"];
-    [task setArguments:[NSArray arrayWithObject:@"aria2c"]];
-    [task launch];
-    [task waitUntilExit];
-}
-
 
 - (BOOL)userNotificationCenter:(NSUserNotificationCenter *)center
      shouldPresentNotification:(NSUserNotification *)notification
