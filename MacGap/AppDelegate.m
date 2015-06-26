@@ -18,11 +18,11 @@
     NSString *theDestination  = [[NSHomeDirectory() stringByAppendingPathComponent:@"downloads"] stringByAppendingPathComponent:@"aria2"];
     [fileManager createDirectoryAtPath: theDestination withIntermediateDirectories:YES attributes:nil error:nil];
     
-    //设置默认路径
+    //set savepath
     NSString *savePath = [@"~/Downloads/aria2" stringByExpandingTildeInPath];
     
     
-    //RUN ARIA2
+    //run aria2
     NSArray *arguments = [NSArray arrayWithObjects: @"--enable-rpc", @"--rpc-listen-all=true", @"--rpc-allow-origin-all", @"-c", @"-D", @"-d",savePath, nil];
     NSString *resourcesPath = [[NSBundle mainBundle] resourcePath];
     NSString *exePath = [NSString stringWithFormat:@"%@/aria2c",resourcesPath];
