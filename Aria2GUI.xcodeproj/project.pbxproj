@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		01866CB01B36047600F04ED2 /* aria2c in Resources */ = {isa = PBXBuildFile; fileRef = 01866CAF1B36047600F04ED2 /* aria2c */; };
+		01963B961B3DB7B400131F46 /* aria2c in Resources */ = {isa = PBXBuildFile; fileRef = 01963B951B3DB7B400131F46 /* aria2c */; };
 		2237E64A192B0177001E1393 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2237E649192B0177001E1393 /* Cocoa.framework */; };
 		2237E67E192B0186001E1393 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2237E67D192B0186001E1393 /* WebKit.framework */; };
 		2237E680192B018D001E1393 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2237E67F192B018D001E1393 /* JavaScriptCore.framework */; };
@@ -44,7 +44,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		01866CAF1B36047600F04ED2 /* aria2c */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = aria2c; sourceTree = "<group>"; };
+		01963B951B3DB7B400131F46 /* aria2c */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; path = aria2c; sourceTree = "<group>"; };
 		2237E646192B0177001E1393 /* Aria2GUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Aria2GUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2237E649192B0177001E1393 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		2237E64C192B0177001E1393 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -167,7 +167,7 @@
 		22B1CEF31937734B00D2C294 /* MacGap */ = {
 			isa = PBXGroup;
 			children = (
-				01866CAF1B36047600F04ED2 /* aria2c */,
+				01963B951B3DB7B400131F46 /* aria2c */,
 				22B1CEF41937734B00D2C294 /* AppDelegate.h */,
 				22B1CEF51937734B00D2C294 /* AppDelegate.m */,
 				22B1CEFA1937734B00D2C294 /* Categories */,
@@ -317,7 +317,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				01866CB01B36047600F04ED2 /* aria2c in Resources */,
+				01963B961B3DB7B400131F46 /* aria2c in Resources */,
 				22B1CF441937734B00D2C294 /* Aria2GUI-Info.plist in Resources */,
 				2237E6EF192BAF85001E1393 /* public in Resources */,
 				22B1CF401937734B00D2C294 /* Credits.rtf in Resources */,
