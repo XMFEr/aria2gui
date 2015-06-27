@@ -23,7 +23,7 @@
     
     
     //run aria2
-    NSArray *arguments = [NSArray arrayWithObjects: @"--enable-rpc", @"--rpc-listen-all=true", @"--rpc-allow-origin-all", @"-c", @"-D", @"-d",savePath, nil];
+    NSArray *arguments = [NSArray arrayWithObjects: @"--enable-rpc", @"--rpc-listen-all=true", @"--rpc-allow-origin-all", @"-c",@"--max-connection-per-server=5" @"-D", @"-d",savePath, nil];
     NSString *resourcesPath = [[NSBundle mainBundle] resourcePath];
     NSString *exePath = [NSString stringWithFormat:@"%@/aria2c",resourcesPath];
     NSTask *task = [[NSTask alloc] init];
