@@ -1,7 +1,34 @@
-# aria2gui
+
+
+
+aria2gui
+===========
+
 ![UI](http://i.imgur.com/zpmZqLr.png)
 
-用MacGap2封装了一下Aria2WebUI，集成了Aria2，打开APP会自动在后台运行Aria2，不需预先安装和设置，添加了默认保存路径~/Downloads/aria2/，（保存路径目前不能修改，如果你想用其他路径，自行编译）
+## Features:
+
+- 支持百度，115，360等网盘的导出（需要浏览器插件支持）
+- 集成了aria2，运行后即完成配置工作
+
+
+## Usage:
+
+- 运行APP
+- 浏览器导出aria2
+- 
+## Download:
+
+ [Releases](https://github.com/yangshun1029/aria2gui/releases)
+
+## With special thanks to:  
+
+ [aria2](http://aria2.sourceforge.net/)
+
+
+## Contributors:  
+
+[Nick](https://github.com/yangshun1029)
 
 
 
