@@ -16,7 +16,8 @@ aria2gui
 
 - 运行APP
 - 浏览器导出aria2
-- 
+
+
 ## Download:
 
  [Releases](https://github.com/yangshun1029/aria2gui/releases)
