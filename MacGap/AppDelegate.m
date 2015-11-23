@@ -1,35 +1,21 @@
 //
 //  AppDelegate.m
-//  MG
+//  MacGap
 //
-//  Created by Tim Debo on 5/19/14.
-//
+//  Created by Alex MacCaw on 08/01/2012.
+//  Copyright (c) 2012 Twitter. All rights reserved.
 //
 
 #import "AppDelegate.h"
-#import "WindowController.h"
 
 @implementation AppDelegate
 
-- (void)applicationWillFinishLaunching:(NSNotification *)aNotification
+@synthesize windowController;
+
+- (void) applicationWillFinishLaunching:(NSNotification *)aNotification
 {
-    //create directory aira2
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    NSString *theDestination  = [[NSHomeDirectory() stringByAppendingPathComponent:@"downloads"] stringByAppendingPathComponent:@"aria2"];
-    [fileManager createDirectoryAtPath: theDestination withIntermediateDirectories:YES attributes:nil error:nil];
+
     
-    //set savepath
-    NSString *savePath = [@"~/Downloads/aria2" stringByExpandingTildeInPath];
-    
-    
-    //run aria2
-    NSArray *arguments = [NSArray arrayWithObjects: @"--enable-rpc", @"--rpc-listen-all=true", @"--rpc-allow-origin-all", @"-c",@"--max-connection-per-server=5",@"-D", @"-d",savePath, nil];
-    NSString *resourcesPath = [[NSBundle mainBundle] resourcePath];
-    NSString *exePath = [NSString stringWithFormat:@"%@/aria2c",resourcesPath];
-    NSTask *task = [[NSTask alloc] init];
-    [task setLaunchPath:exePath];
-    [task setArguments:arguments];
-    [task launch];
 }
 
 -(BOOL)applicationShouldHandleReopen:(NSApplication*)application
@@ -40,16 +26,12 @@
     return YES;
 }
 
-- (void) applicationDidFinishLaunching:(NSNotification *)aNotification {
+- (void) applicationDidFinishLaunching:(NSNotification *)aNotification { 
     self.windowController = [[WindowController alloc] initWithURL: kStartPage];
-    [self.windowController setWindowParams];
+    [self.windowController showWindow: [NSApplication sharedApplication].delegate];
+    self.windowController.contentView.webView.alphaValue = 1.0;
+    self.windowController.contentView.alphaValue = 1.0;
     [self.windowController showWindow:self];
-    [[NSUserNotificationCenter defaultUserNotificationCenter] setDelegate:self];
 }
 
-- (BOOL)userNotificationCenter:(NSUserNotificationCenter *)center
-     shouldPresentNotification:(NSUserNotification *)notification
-{
-    return YES;
-}
 @end

@@ -1,58 +1,28 @@
 //
 //  Command.m
-//  MG
+//  MacGap
 //
-//  Created by Tim Debo on 5/23/14.
-//
+//  Created by Joe Hildebrand on 1/10/12.
+//  Copyright (c) 2012 Twitter. All rights reserved.
 //
 
 #import "Command.h"
-#import <WebKit/WebKit.h>
-#import "WindowController.h"
+#import <JavaScriptCore/JSContextRef.h>
 
-@implementation Command
-@synthesize webView, windowController;
-+ (JSValue *)makeConstructor:(id)block inContext:(JSContext *)context {
-    JSValue *fun = [context evaluateScript:@"(function () { return this.__construct.apply(this, arguments); });"];
-    fun[@"prototype"][@"__construct"] = block;
-    return fun;
-}
+@implementation Command 
 
-+ (JSValue *)constructor {
-    return [self makeConstructor:^{ return [self new]; } inContext:JSContext.currentContext];
-}
-
-- (NSString*) exportName {
-    return NSStringFromClass([self class]);
-}
-
-- (id) initWithWindowController:(WindowController *)aWindowController
-{
-    self = [super init];
-    if(self) {
-        self.windowController = aWindowController;
-        self.webView = aWindowController.webView;
-    }
-    
-    return self;
-
-}
-
-- (id) initWithContext:(JSContext*)context {
+- (id) initWithContext:(JSContextRef)aContext {
     self = [super init];
     if (!self)
         return nil;
-    jsContext = [context JSGlobalContextRef];
-    JSGlobalContextRetain((JSGlobalContextRef)jsContext);
+    context = aContext;
+    JSGlobalContextRetain((JSGlobalContextRef)context);
     return self;
 }
 
 - (void)dealloc
 {
-    if (jsContext)
-        JSGlobalContextRelease((JSGlobalContextRef)jsContext);
+    if (context)
+        JSGlobalContextRelease((JSGlobalContextRef)context);
 }
-
-- (void) initializePlugin {}
-
 @end

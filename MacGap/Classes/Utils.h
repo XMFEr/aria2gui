@@ -1,13 +1,20 @@
-//
-//  Utils.h
-//  MG
-//
-//  Created by Tim Debo on 5/28/14.
-//
-//
-
 #import <Foundation/Foundation.h>
+#import <Webkit/WebScriptObject.h>
 
-NSString *pathForResource(NSString* resourcePath);
+#define DEG_EPS 0.001
+#define fequal(a,b) (fabs((a) - (b)) < DEG_EPS)
+#define fequalzero(a) (fabs(a) < DEG_EPS)
 
+@class LoadingView;
 
+@interface Utils : NSObject {
+}
+
+- (float) titleBarHeight:(NSWindow*)aWindow;
+- (NSString*) pathForResource:(NSString*)resourcepath;
+- (NSString*) convertDictionaryToJSON:(NSDictionary*)dict;
+- (NSArray*) convertJSarrayToNSArray:(WebScriptObject*)jsArray;
+
++ (Utils*) sharedInstance;
+
+@end

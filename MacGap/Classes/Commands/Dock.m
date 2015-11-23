@@ -1,33 +1,31 @@
-//
-//  Dock.m
-//  MG
-//
-//  Created by Tim Debo on 5/22/14.
-//
-//
-
 #import "Dock.h"
-
 
 @implementation Dock
 
+@synthesize badge;
 
-- (JSValue*) badge
+- (void) setBadge:(NSString *)value
 {
     NSDockTile *tile = [[NSApplication sharedApplication] dockTile];
-    return [JSValue valueWithObject:[tile badgeLabel] inContext: JSContext.currentContext];
+    [tile setBadgeLabel:value];
 }
 
-- (void) addBadge: (NSString*) badge
+- (NSString *) badge
 {
     NSDockTile *tile = [[NSApplication sharedApplication] dockTile];
-    [tile setBadgeLabel:badge];
+    return [tile badgeLabel];
 }
 
-- (void) removeBadge
+#pragma mark WebScripting Protocol
+
++ (BOOL) isSelectorExcludedFromWebScript:(SEL)selector
 {
-    NSDockTile *tile = [[NSApplication sharedApplication] dockTile];
-    [tile setBadgeLabel:nil];
+    return NO;
+}
+
++ (BOOL) isKeyExcludedFromWebScript:(const char*)name
+{
+	return NO;
 }
 
 @end

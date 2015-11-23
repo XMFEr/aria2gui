@@ -1,24 +1,15 @@
 //
-//  Prefix header
-//
-//  The contents of this file are implicitly included at the beginning of every source file.
+// Prefix header for all source files of the 'MacGap' target in the 'MacGap' project
 //
 
 #ifdef __OBJC__
-
     #ifdef _DEBUG
-        #define DebugNSLog(format, ...) NSLog(format, ## __VA_ARGS__)
-        #define DLog(fmt, ...) NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)
-
+    #define DebugNSLog(format, ...) NSLog(format, ## __VA_ARGS__)
     #else
-        #define DebugNSLog(format, ...)
-        #define DLog(...)
+    #define DebugNSLog(format, ...)
     #endif
-    #define ALog(fmt, ...) NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)
 
     #import <Cocoa/Cocoa.h>
     #import "Constants.h"
     #import "Utils.h"
-
-
 #endif

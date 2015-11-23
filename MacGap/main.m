@@ -1,14 +1,14 @@
 //
 //  main.m
-//  MG
+//  MacGap
 //
-//  Created by Tim Debo on 5/19/14.
-//
+//  Created by Alex MacCaw on 08/01/2012.
+//  Copyright (c) 2012 Twitter. All rights reserved.
 //
 
 #import <Cocoa/Cocoa.h>
 
-int main(int argc, const char * argv[])
+int main(int argc, char *argv[])
 {
-    return NSApplicationMain(argc, argv);
+    return NSApplicationMain(argc, (const char **)argv);
 }

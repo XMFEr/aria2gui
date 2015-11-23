@@ -1,19 +1,17 @@
-//
-//  Sound.h
-//  MG
-//
-//  Created by Tim Debo on 5/31/14.
-//
-//
-
+#import <Cocoa/Cocoa.h>
 #import "Command.h"
+#import "CallbackDelegate.h"
 
-@protocol SoundExports <JSExport>
-JSExportAs(play, - (void) play:(NSString*)file onComplete:(JSValue*)callback);
-JSExportAs(playSystem, - (void) playSystem:(NSString*)name onComplete:(JSValue*)callback);
-@property (retain) JSValue* cb;
-@end
 
-@interface Sound : Command <SoundExports, NSSoundDelegate>
+@interface Sound : Command {
+
+}
+
+// pending callbacks for sounds being played, to keep
+// ARC from freeing them too early
+@property (nonatomic, strong) NSMutableSet *pending;
+
+- (void) play:(NSString*)file onComplete:(WebScriptObject*)callback;
+- (void) playSystem:(NSString*)name onComplete:(WebScriptObject*)callback;
 
 @end

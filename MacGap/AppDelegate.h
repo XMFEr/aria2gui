@@ -1,16 +1,17 @@
 //
 //  AppDelegate.h
-//  MG
+//  MacGap
 //
-//  Created by Tim Debo on 5/19/14.
-//
+//  Created by Alex MacCaw on 08/01/2012.
+//  Copyright (c) 2012 Twitter. All rights reserved.
 //
 
 #import <Cocoa/Cocoa.h>
+#import "Classes/ContentView.h"
 
-@class WindowController;
+#import "WindowController.h"
 
-@interface AppDelegate : NSObject <NSApplicationDelegate,NSUserNotificationCenterDelegate>
+@interface AppDelegate : NSObject <NSApplicationDelegate>
 
 @property (retain, nonatomic) WindowController *windowController;
 

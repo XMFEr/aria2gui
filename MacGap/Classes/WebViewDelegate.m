@@ -1,19 +1,31 @@
-//
-//  WebViewDelegate.m
-//  MG
-//
-//  Created by Tim Debo on 5/20/14.
-//
-//
-#import <JavaScriptCore/JavaScriptCore.h>
-
 #import "WebViewDelegate.h"
+#import "Sound.h"
+#import "Dock.h"
+#import "Growl.h"
+#import "Notice.h"
+#import "Path.h"
+#import "App.h"
+#import "Window.h"
 #import "WindowController.h"
-#import "MacGap.h"
+#import "Clipboard.h"
+#import "Fonts.h"
+#import "MenuProxy.h"
+#import "UserDefaults.h"
 
 @implementation WebViewDelegate
 
-@synthesize windowController, app, menu, window;
+@synthesize sound;
+@synthesize dock;
+@synthesize growl;
+@synthesize notice;
+@synthesize path;
+@synthesize app;
+@synthesize window;
+@synthesize requestedWindow;
+@synthesize clipboard;
+@synthesize fonts;
+@synthesize menu;
+@synthesize userDefaults;
 
 - (id) initWithMenu:(NSMenu*)aMenu
 {
@@ -22,13 +34,45 @@
         return nil;
     
     mainMenu = aMenu;
-    
     return self;
+}
+
+- (void) webView:(WebView*)webView didClearWindowObject:(WebScriptObject*)windowScriptObject forFrame:(WebFrame *)frame
+{
+    JSContextRef context = [frame globalContext];
+    if (self.sound == nil) { self.sound = [[Sound alloc] initWithContext:context]; }
+	if (self.dock == nil) { self.dock = [Dock new]; }
+	if (self.growl == nil) { self.growl = [Growl new]; }
+	if (self.path == nil) { self.path = [Path new]; }
+	if (self.clipboard == nil) { self.clipboard = [Clipboard new]; }
+	if (self.fonts == nil) { self.fonts = [Fonts new]; }
+
+    if (self.notice == nil && [Notice available] == YES) {
+       self.notice = [[Notice alloc] initWithWebView:webView];
+    }
+	
+    if (self.app == nil) { 
+        self.app = [[App alloc] initWithWebView:webView]; 
+    }
+    
+    if (self.window == nil) { 
+        self.window = [[Window alloc] initWithWebView:webView]; 
+    }
+    
+    if (self.menu == nil) {
+        self.menu = [MenuProxy proxyWithContext:context andMenu:mainMenu];
+    }
+    
+	if (self.userDefaults == nil) {
+        self.userDefaults = [[UserDefaults alloc] initWithWebView:webView];
+    }
+    
+    [windowScriptObject setValue:self forKey:kWebScriptNamespace];
 }
 
 
 - (void)webView:(WebView *)sender runOpenPanelForFileButtonWithResultListener:(id < WebOpenPanelResultListener >)resultListener allowMultipleFiles:(BOOL)allowMultipleFiles{
-    
+   
     NSOpenPanel * openDlg = [NSOpenPanel openPanel];
     
     [openDlg setCanChooseFiles:YES];
@@ -44,31 +88,13 @@
     }];
 }
 
-- (void)webView:(WebView *)sender willPerformDragDestinationAction:(WebDragDestinationAction)action forDraggingInfo:(id < NSDraggingInfo >)draggingInfo
-{
-    NSArray *files = nil;
-    if (action == WebDragDestinationActionDHTML) {
-        NSPasteboard *pboard = [draggingInfo draggingPasteboard];
-      
-        if([[pboard types] containsObject:NSURLPboardType] ) {
-            
-           files = [pboard propertyListForType:NSFilenamesPboardType];
-      
-        }
-    }
-    if(files) {
-        [app addFiles:files];
-    }
-}
-
-
 - (void) webView:(WebView*)webView addMessageToConsole:(NSDictionary*)message
 {
-	if (![message isKindOfClass:[NSDictionary class]]) {
+	if (![message isKindOfClass:[NSDictionary class]]) { 
 		return;
 	}
 	
-	NSLog(@"JavaScript console: %@:%@: %@",
+	NSLog(@"JavaScript console: %@:%@: %@", 
 		  [[message objectForKey:@"sourceURL"] lastPathComponent],	// could be nil
 		  [message objectForKey:@"lineNumber"],
 		  [message objectForKey:@"message"]);
@@ -112,12 +138,12 @@
     static const unsigned long long defaultQuota = 5 * 1024 * 1024;
     if ([origin respondsToSelector: @selector(setQuota:)]) {
         [origin performSelector:@selector(setQuota:) withObject:[NSNumber numberWithLongLong: defaultQuota]];
-    } else {
-        NSLog(@"could not increase quota for %lld", defaultQuota);
+    } else { 
+        NSLog(@"could not increase quota for %lld", defaultQuota); 
     }
 }
 
-- (NSArray *)webView:(WebView *)sender contextMenuItemsForElement:(NSDictionary *)element defaultMenuItems:(NSArray *)defaultMenuItems
+- (NSArray *)webView:(WebView *)sender contextMenuItemsForElement:(NSDictionary *)element defaultMenuItems:(NSArray *)defaultMenuItems 
 {
     NSMutableArray *webViewMenuItems = [defaultMenuItems mutableCopy];
     
@@ -152,12 +178,12 @@
 }
 
 - (WebView *)webView:(WebView *)sender createWebViewWithRequest:(NSURLRequest *)request{
-    windowController = [[WindowController alloc] initWithRequest:request];
-    return windowController.webView;
+    requestedWindow = [[WindowController alloc] initWithRequest:request];
+    return requestedWindow.contentView.webView;    
 }
 
 - (void)webViewShow:(WebView *)sender{
-    [windowController showWindow:sender];
+    [requestedWindow showWindow:sender];
 }
 
 - (void)webView:(WebView *)webView decidePolicyForNewWindowAction:(NSDictionary *)actionInformation request:(NSURLRequest *)request newFrameName:(NSString *)frameName decisionListener:(id < WebPolicyDecisionListener >)listener
@@ -166,40 +192,17 @@
     [listener ignore];
 }
 
+#pragma mark WebScripting protocol
 
-- (void) webView: (WebView*) webView didCreateJavaScriptContext:(JSContext *)context forFrame:(WebFrame *)frame
++ (BOOL) isSelectorExcludedFromWebScript:(SEL)selector
 {
-    windowController.jsContext = context;
- 
-    //Initialize "Always On" commands
-    if (app == nil) {
-        app = [[App alloc] initWithWebView:webView];
-    }
-    
-    if(window == nil) {
-        window = [[Window alloc] initWithWindowController:self.windowController andWebview:webView];
-    }
-    
-    if(menu == nil) {
-        menu = [Menu menuWithContext:context andMenu:mainMenu ];
-    }
-    
-    context[kWebScriptNamespace] = app;
-    context[kWebScriptNamespace][@"Window"] = window;
-    context[kWebScriptNamespace][@"Menu"] = menu;
-    
-    //Init user selected plugins
-    for( NSString* plugin in windowController.pluginsMap) {
-       
-        id obj = [[NSClassFromString(plugin)alloc] initWithWindowController: windowController];
-        NSString *exportName = [obj exportName];
-        context[kWebScriptNamespace][exportName] = obj;
-    }
+	return YES;
 }
 
-- (void)webView:(WebView *)sender didFinishLoadForFrame:(WebFrame *)frame
++ (BOOL) isKeyExcludedFromWebScript:(const char*)name
 {
-    [Event triggerEvent:@"MacGap.load.complete" forWebView:sender];
+	return NO;
 }
+
 
 @end
