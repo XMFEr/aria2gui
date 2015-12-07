@@ -9,8 +9,8 @@
 #import "AppDelegate.h"
 
 @implementation AppDelegate
-
 @synthesize windowController;
+
 
 - (void) applicationWillFinishLaunching:(NSNotification *)aNotification
 {
@@ -26,12 +26,44 @@
     return YES;
 }
 
-- (void) applicationDidFinishLaunching:(NSNotification *)aNotification { 
+- (void) applicationDidFinishLaunching:(NSNotification *)aNotification
+{
     self.windowController = [[WindowController alloc] initWithURL: kStartPage];
     [self.windowController showWindow: [NSApplication sharedApplication].delegate];
     self.windowController.contentView.webView.alphaValue = 1.0;
     self.windowController.contentView.alphaValue = 1.0;
     [self.windowController showWindow:self];
+    [self startAria2];
+    
+}
+
+
+-(void)applicationWillTerminate:(NSNotification *)notification
+{
+    [self closeAria2];
+}
+
+//-(void)showbadge {
+//  [[[NSApplication sharedApplication] dockTile] setBadgeLabel:[NSString stringWithFormat:]];
+//}
+
+-(void)startAria2
+{
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"startaria" ofType:@"sh"];
+    NSTask *task = [[NSTask alloc] init];
+    task.launchPath = @"/bin/sh";
+    task.arguments = @[path];
+    [task launch];
+    //NSArray *arguments = [NSArray arrayWithObjects: @"--enable-rpc=true", @"--check-integrity=true",@"--rpc-listen-all=true", @"--rpc-allow-origin-all", @"--max-connection-per-server=10",@"--max-concurrent-downloads=10",@"--min-split-size=10M",@"--split=10",@"--bt-enable-lpd=true",@"--bt-max-peers=55",@"--bt-require-crypto=true",@"-c",@"-D", @"-d",savePath, nil];
+}
+
+-(void)closeAria2
+{
+    NSArray *arg =[NSArray arrayWithObjects:@"aria2c",nil];
+    NSTask *task=[[NSTask alloc] init];
+    [task setLaunchPath:@"/usr/bin/killall"];
+    [task setArguments:arg];
+    [task launch];
 }
 
 @end
