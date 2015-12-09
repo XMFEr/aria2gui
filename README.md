@@ -10,7 +10,7 @@ aria2gui
 
 ## Usage:
 
-- 运行APP
+- 解压后拖到应用里面运行
 - 浏览器导出aria2
 
 ## Download:
