@@ -5,7 +5,7 @@ aria2gui
 
 ## Features:
 
-- 支持百度，115，360等网盘的导出（需要浏览器插件支持）
+- 支持迅雷离线，百度，115，360等网盘的导出（需要浏览器插件支持）
 - 集成了aria2，运行后即完成配置工作
 
 ## Usage:
@@ -25,7 +25,7 @@ aria2gui
 
 ## Contributors:  
 
-[Nick](https://github.com/yangshun1029)
+ [Nick](https://github.com/yangshun1029)
 
 
 
