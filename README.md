@@ -19,9 +19,8 @@ aria2gui
 
 ## With special thanks to:  
 
- aria2[aria2](http://aria2.sourceforge.net/)
- 
- WebUI[yaaw](https://github.com/binux/yaaw)
+ - [aria2](http://aria2.sourceforge.net/)
+ - [yaaw](https://github.com/binux/yaaw)
 
 
 ## Contributors:  
