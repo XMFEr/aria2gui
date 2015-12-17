@@ -14,8 +14,7 @@
 
 - (void) applicationWillFinishLaunching:(NSNotification *)aNotification
 {
-
-    
+[self startAria2];
 }
 
 -(BOOL)applicationShouldHandleReopen:(NSApplication*)application
@@ -33,8 +32,6 @@
     self.windowController.contentView.webView.alphaValue = 1.0;
     self.windowController.contentView.alphaValue = 1.0;
     [self.windowController showWindow:self];
-    [self startAria2];
-    
 }
 
 
@@ -43,9 +40,6 @@
     [self closeAria2];
 }
 
-//-(void)showbadge {
-//  [[[NSApplication sharedApplication] dockTile] setBadgeLabel:[NSString stringWithFormat:]];
-//}
 
 -(void)startAria2
 {

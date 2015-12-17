@@ -243,7 +243,7 @@
       _response: function(json) {
         if (typeof(json) === 'undefined' || json === "") {
           return {
-            error: 'Aria2 RPC 服务器错误',
+            error: 'Internal server error',
             version: '2.0'
           };
         }
@@ -262,7 +262,7 @@
           }
           catch (e) {
             return {
-              error: 'Aria2 RPC 服务器错误: ' + e,
+              error: 'Internal server error: ' + e,
               version: '2.0'
             }
           }
