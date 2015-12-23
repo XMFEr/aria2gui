@@ -18,7 +18,7 @@ aria2gui
 ## Tips:
 
 - 使用Chrome浏览器可配合[YAAW-for-Chrome](https://github.com/acgotaku/YAAW-for-Chrome)插件接管浏览器的所有下载到aria2
-- 导出插件下载：[百度网盘导出插件](https://github.com/acgotaku/BaiduExporter)，[115网盘导出插件](https://github.com/acgotaku/115)
+- 导出插件下载：[百度网盘](https://github.com/acgotaku/BaiduExporter)，[115网盘](https://github.com/acgotaku/115)
 
 ## Download:
 
