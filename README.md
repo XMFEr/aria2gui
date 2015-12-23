@@ -15,8 +15,8 @@ aria2gui
 
 - 解压后拖到应用里面运行
 - 浏览器导出aria2
-- 百度网盘导出插件[BaiduExporter](https://github.com/acgotaku/BaiduExporter)
-- 115网盘导出插件[115](https://github.com/acgotaku/115)
+- [百度网盘导出插件](https://github.com/acgotaku/BaiduExporter)
+- [115网盘导出插件](https://github.com/acgotaku/115)
 - 如果使用的的是chrome浏览器可配合[YAAW-for-Chrome](https://github.com/acgotaku/YAAW-for-Chrome)插件可接管浏览器的所有下载到aria2
 
 
