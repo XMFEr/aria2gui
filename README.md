@@ -1,4 +1,4 @@
-aria2gui
+Aria2GUI
 ===========
 
 ![UI](http://i.imgur.com/vkMCIg8.png)
