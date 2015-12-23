@@ -22,7 +22,7 @@ aria2gui
 
 ## Download:
 
-[Releases](https://github.com/yangshun1029/aria2gui/releases)
+  [Releases](https://github.com/yangshun1029/aria2gui/releases)
 
 ## With special thanks to:  
 
@@ -32,7 +32,7 @@ aria2gui
 
 ## Contributors:  
 
-[Nick](https://github.com/yangshun1029)
+  [Nick](https://github.com/yangshun1029)
  
 ##License
 
