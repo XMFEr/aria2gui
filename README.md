@@ -10,15 +10,15 @@ aria2gui
 - 未完成任务退出可以自动保存
 - 支持迅雷离线，百度，115，360等网盘的aria2导出（需要浏览器插件支持）
 
-
 ## Usage:
 
 - 解压后拖到应用里面运行
 - 浏览器导出aria2
-- [百度网盘导出插件](https://github.com/acgotaku/BaiduExporter)
-- [115网盘导出插件](https://github.com/acgotaku/115)
-- 使用Chrome浏览器可配合[YAAW-for-Chrome](https://github.com/acgotaku/YAAW-for-Chrome)插件接管浏览器的所有下载到aria2
 
+## Tips:
+
+- 使用Chrome浏览器可配合[YAAW-for-Chrome](https://github.com/acgotaku/YAAW-for-Chrome)插件接管浏览器的所有下载到aria2
+- 导出插件下载：[百度网盘导出插件](https://github.com/acgotaku/BaiduExporter)，[115网盘导出插件](https://github.com/acgotaku/115)
 
 ## Download:
 
