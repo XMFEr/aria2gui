@@ -55,8 +55,8 @@
 {
     NSArray *arg =[NSArray arrayWithObjects:@"aria2c",nil];
     NSTask *task=[[NSTask alloc] init];
-    [task setLaunchPath:@"/usr/bin/killall"];
-    [task setArguments:arg];
+    task.launchPath = @"/usr/bin/killall";
+    task.arguments = arg;
     [task launch];
 }
 
