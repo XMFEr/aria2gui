@@ -5,13 +5,20 @@ aria2gui
 
 ## Features:
 
-- 支持迅雷离线，百度，115，360等网盘的导出（需要浏览器插件支持）
 - 集成了aria2，运行后即完成配置工作
+- 多线程下载
+- 未完成任务退出可以自动保存
+- 支持迅雷离线，百度，115，360等网盘的aria2导出（需要浏览器插件支持）
+
 
 ## Usage:
 
 - 解压后拖到应用里面运行
 - 浏览器导出aria2
+- 百度网盘导出插件[BaiduExporter](https://github.com/acgotaku/BaiduExporter)
+- 115网盘导出插件[115](https://github.com/acgotaku/115)
+- 如果使用的的是chrome浏览器可配合[YAAW-for-Chrome](https://github.com/acgotaku/YAAW-for-Chrome)插件可接管浏览器的所有下载到aria2
+
 
 ## Download:
 
@@ -19,13 +26,16 @@ aria2gui
 
 ## With special thanks to:  
 
- - [aria2](http://aria2.sourceforge.net/)
- - [yaaw](https://github.com/binux/yaaw)
-
+ - [Aria2](http://aria2.sourceforge.net/)
+ - [YAAW](https://github.com/binux/yaaw)
+ - [MacGap](https://github.com/MacGapProject)
 
 ## Contributors:  
 
  [Nick](https://github.com/yangshun1029)
+ 
+##License
 
+![GPLv3](https://www.gnu.org/graphics/gplv3-127x51.png)
 
-
+Aria2GUI is licensed under [GNU General Public License](https://www.gnu.org/licenses/gpl.html) Version 3 or later.
