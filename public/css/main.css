@@ -162,7 +162,7 @@
 }
 .task .task-name span {
     margin-left: 3px;
-    font-size: 18px;
+    font-size: 14px;
     font-weight: bold;
 }
 
@@ -352,12 +352,10 @@
 }
 #ib-file-btn,
 #ib-options-btn {
-    float: right !important;
     margin: 0 0 5px 5px;
 }
 @media (max-width: 980px) {
     #ib-file-btn, #ib-options-btn {
-        float: none !important;
         margin-bottom: 5px;
     }
 }
@@ -369,23 +367,27 @@
 }
 #ib-options li {
     display: block;
-    float: left;
     padding-bottom: 6px;
-    margin-right: 100px;
 }
 #ib-options li span {
     display: block;
     text-align: right;
-    padding-right: 1em;
-    width: 140px;
+    padding-right: 12px;
+    width: 75px;
     line-height: 24px;
 }
-#ib-options li > * {
+#ib-options li > span {
     float: left;
 }
 #ib-peers .ip_port {
     display: inline-block;
     width: 250px;
+}
+#ib-options-btn div {
+    width: 303px;
+}
+#ib-options-save {
+    float: right;
 }
 
 /* task-contextmenu */
@@ -510,6 +512,7 @@
 #rpc-path {
   width: 100%;
   height: 28px;
+  float: left;
   box-sizing: border-box;
   -moz-box-sizing: border-box;
 }
