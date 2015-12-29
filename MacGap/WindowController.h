@@ -5,8 +5,8 @@
     
 }
 
-- (id) initWithURL:(NSString *) url; //WindowController方法1
-- (id) initWithRequest: (NSURLRequest *)request; //WindowController方法2
+- (id) initWithURL:(NSString *) url; 
+- (id) initWithRequest: (NSURLRequest *)request; 
 
 @property (retain) NSURL * url;
 @property (retain) IBOutlet ContentView *contentView;
